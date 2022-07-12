@@ -53,9 +53,13 @@
                         <!-- Content -->
                         <div>
                             <div id="carousel">
-                                <button id="left-scroll" class="border-0"><i class="fa-solid fa-caret-left fa-2x"></i></button>
-                                <button id="right-scroll" class="border-0"><i class="fa-solid fa-caret-right fa-2x"></i></button>
-                                <figure v-for="(image,index) in images" class="h-100 position-relative" v-show="index===currentActiveIndex">
+                                <button id="left-scroll" class="border-0" @click="goToPrevious">
+                                    <i class="fa-solid fa-caret-left fa-2x"></i>
+                                </button>
+                                <button id="right-scroll" class="border-0" @click="goToNext">
+                                    <i class="fa-solid fa-caret-right fa-2x"></i>
+                                </button>
+                                <figure v-for="(image,index) in images" class="h-100 position-relative" v-show="index === currentActiveIndex">
                                     <img 
                                     v-bind:src="image.url" 
                                     v-bind:alt="image.title"
@@ -81,8 +85,8 @@
                 </div>
             </div>
         </main>
-        <script src="js/script.js"></script>
     </div>
+    <script src="js/script.js"></script>
 </body>
 
 </html>

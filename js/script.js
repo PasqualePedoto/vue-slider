@@ -81,7 +81,14 @@ const root = new Vue({
         
     },
     methods: {
-        
+        goToNext() {
+            if (this.currentActiveIndex === this.images.length - 1) this.currentActiveIndex = 0;
+            else this.currentActiveIndex++;
+        },
+        goToPrevious() {
+            if (this.currentActiveIndex === 0) this.currentActiveIndex = this.images.length - 1;
+            else this.currentActiveIndex--;
+        }
     }
 });
 
