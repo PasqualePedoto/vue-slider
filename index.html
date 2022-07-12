@@ -53,7 +53,9 @@
                         <!-- Content -->
                         <div>
                             <div id="carousel">
-                                <figure v-for="(image,index) in images" class="position-relative" v-show="index===currentActiveIndex">
+                                <button id="left-scroll" class="border-0"><i class="fa-solid fa-caret-left fa-2x"></i></button>
+                                <button id="right-scroll" class="border-0"><i class="fa-solid fa-caret-right fa-2x"></i></button>
+                                <figure v-for="(image,index) in images" class="h-100 position-relative" v-show="index===currentActiveIndex">
                                     <img 
                                     v-bind:src="image.url" 
                                     v-bind:alt="image.title"
@@ -66,7 +68,14 @@
                             </div>
                         </div>
                         <div>
-                            <div id="thumbnails"></div>
+                            <div id="thumbnails" class="w-100">
+                                <figure v-for="(image,index) in images" v-bind:class="{'not-active-image-thumb': currentActiveIndex !== index}">
+                                    <img 
+                                    v-bind:src="image.url" 
+                                    v-bind:alt="image.title"
+                                    >
+                                </figure>
+                            </div>
                         </div>
                     </div>
                 </div>

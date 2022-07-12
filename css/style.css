@@ -43,6 +43,9 @@ img {
     height: calc(25vh - 50px);
 
     display: flex;
+}
+
+#thumbnails > *{
     flex-basis: calc(100% / 5);
 }
 
