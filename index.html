@@ -73,7 +73,7 @@
                         </div>
                         <div>
                             <div id="thumbnails" class="w-100">
-                                <figure v-for="(image,index) in images" v-bind:class="{'not-active-image-thumb': currentActiveIndex !== index}">
+                                <figure v-for="(image,index) in images" v-bind:class="{'not-active-image-thumb': currentActiveIndex !== index}" @click="changeThroughtThumbImage(index)">
                                     <img 
                                     v-bind:src="image.url" 
                                     v-bind:alt="image.title"

@@ -88,6 +88,9 @@ const root = new Vue({
         goToPrevious() {
             if (this.currentActiveIndex === 0) this.currentActiveIndex = this.images.length - 1;
             else this.currentActiveIndex--;
+        },
+        changeThroughtThumbImage(index) {
+            this.currentActiveIndex = index;
         }
     }
 });
