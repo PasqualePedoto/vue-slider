@@ -76,6 +76,7 @@ const root = new Vue({
             },
         ],
         currentActiveIndex: 0,
+        clear:0,
     },
     computed: {
         
@@ -89,9 +90,50 @@ const root = new Vue({
             if (this.currentActiveIndex === 0) this.currentActiveIndex = this.images.length - 1;
             else this.currentActiveIndex--;
         },
+
+        // # BONUS 1
+
         changeThroughtThumbImage(index) {
             this.currentActiveIndex = index;
-        }
+        },
+        
+        // # BONUS 2
+
+        // Autoplay verso destra
+        startIntervallToRight() {
+            this.clear = setInterval(() => {
+                if (this.currentActiveIndex === this.images.length - 1) this.currentActiveIndex = 0;
+                else this.currentActiveIndex++;
+            },1000)
+        },
+
+        // Autoplay verso sinistra
+        startIntervallToLeft() {
+            this.clear = setInterval(() => {
+                if (this.currentActiveIndex === 0) this.currentActiveIndex = this.images.length - 1;
+                else this.currentActiveIndex--;
+            },1000)
+        },
+
+        // Funzione che fa partire l'autoplay
+        startAutoplay() {
+            this.startIntervallToRight();
+        },
+
+        // Funzione che stoppa l'autoplay
+        stopAutoplay() {
+            clearInterval(this.clear);
+            this.clear = 0;
+        },
+
+        // Funzione che inverte l'autoplay
+        invertAutoplay() {
+            if (this.clear === 0) this.startIntervallToLeft();
+            else {
+                clearInterval(this.clear);
+                this.startIntervallToLeft();
+            }
+        },
     }
 });
 
