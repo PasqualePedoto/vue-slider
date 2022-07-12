@@ -53,13 +53,17 @@
                         <!-- Content -->
                         <div>
                             <div id="carousel">
-                                <button id="left-scroll" class="border-0" @click="goToPrevious">
+                                <button
+                                id="left-scroll" 
+                                class="border-0" 
+                                @click="goToPrevious" 
+                                >
                                     <i class="fa-solid fa-caret-left fa-2x"></i>
                                 </button>
                                 <button id="right-scroll" class="border-0" @click="goToNext">
                                     <i class="fa-solid fa-caret-right fa-2x"></i>
                                 </button>
-                                <figure v-for="(image,index) in images" class="h-100 position-relative" v-show="index === currentActiveIndex">
+                                <figure v-for="(image,index) in images" class="h-100 position-relative" v-show="index === currentActiveIndex" @mouseover="overFigStopAuto" @mouseleave="notOverFigProgressingAuto">
                                     <img 
                                     v-bind:src="image.url" 
                                     v-bind:alt="image.title"

@@ -76,7 +76,9 @@ const root = new Vue({
             },
         ],
         currentActiveIndex: 0,
-        clear:0,
+        clear: 0,
+        progressingRight: true,
+        overWithMouse: false,
     },
     computed: {
         
@@ -101,6 +103,7 @@ const root = new Vue({
 
         // Autoplay verso destra
         startIntervallToRight() {
+            this.progressingRight = true;
             this.clear = setInterval(() => {
                 if (this.currentActiveIndex === this.images.length - 1) this.currentActiveIndex = 0;
                 else this.currentActiveIndex++;
@@ -109,6 +112,7 @@ const root = new Vue({
 
         // Autoplay verso sinistra
         startIntervallToLeft() {
+            this.progressingRight = false;
             this.clear = setInterval(() => {
                 if (this.currentActiveIndex === 0) this.currentActiveIndex = this.images.length - 1;
                 else this.currentActiveIndex--;
@@ -133,6 +137,15 @@ const root = new Vue({
                 clearInterval(this.clear);
                 this.startIntervallToLeft();
             }
+        },
+
+        // Metodi che realizzano l'hover 
+        overFigStopAuto () {
+            clearInterval(this.clear);
+        },
+        notOverFigProgressingAuto() {
+            if (this.progressingRight) this.startIntervallToRight();
+            else this.startIntervallToLeft();
         },
     }
 });
